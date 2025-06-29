@@ -6,6 +6,7 @@ I also used simple rule-based heuristics (e.g., unusual TCP flags, ICMP pings) t
 The elk stack is used to visualize these packet anomalies in detail along with auth logs from the VM (including alert tags for certain commands)
 
 General Project Structure:
+![image](https://github.com/user-attachments/assets/4a5ee7e6-1054-4401-9f66-383a7e9fc732)
 
 
 VM Setups:
