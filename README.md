@@ -1,5 +1,5 @@
 This project is a lightweight SIEM I built to learn more about SOC operations as a student.
-I got the idea after looking at people making homelabs using VirtualBox and I decided to implement this with a sort of SIEM functionality.
+I got the idea after looking at people online making homelabs using VirtualBox, and I decided to implement this with a sort of SIEM functionality.
 I built it using packet logging, machine learning, authentication logs, and ELK Stack visualization. 
 It monitors network packets on a Virtual Machine network and detects anomalous packets using an Isolation Forest ML model I trained. 
 I also used simple rule-based heuristics (e.g., unusual TCP flags, ICMP pings) to detect unusual traffic from other devices on the network.
@@ -57,3 +57,18 @@ From the attacker VM I ran variations of commands like nmap, ping, and hydra wit
 
 
 Overall I thought this was a fun way to learn how data flows at the packet level. While making this, I did run into many challenges like fine-tuning the ML model and configuration errors, and I believe I learned a lot by debugging and ssolving these issues as they came about. For this project I kept things simple but extendable if I ever decide to build on top of it. 
+
+ELASTIC (KIBANA) DASHBOARD IMAGES:
+
+Network/Packet logging:
+![Image](https://github.com/user-attachments/assets/16001a09-8ea7-4226-9364-cdf1e512d86f)
+
+VM Authentication Logging (The pie chart looks off because it was representative of a very small sample of auth logs):
+![Image](https://github.com/user-attachments/assets/58edbc26-81fc-415f-8d73-4f50e511c6ce)
+
+![Image](https://github.com/user-attachments/assets/6315b0c6-f3a5-4bbb-8ac4-9b9f4695c9b9)
+
+
+
+
+
