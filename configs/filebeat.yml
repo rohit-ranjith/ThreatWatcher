@@ -17,7 +17,7 @@ filebeat.inputs:
   - type: log
     enabled: true
     paths:
-      - /var/log/auth.log
+      - "path to auth.log on VM" 
     fields:
       log_type: auth
     fields_under_root: true
@@ -26,7 +26,7 @@ filebeat.inputs:
   - type: log
     enabled: true
     paths:
-      - /home/vboxuser/anomalies_detected.csv
+      - "path to anomalies_detected.csv on VM"
     fields:
       log_type: anomaly
     fields_under_root: true
