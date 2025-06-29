@@ -6,50 +6,6 @@ I also used simple rule-based heuristics (e.g., unusual TCP flags, ICMP pings) t
 The elk stack is used to visualize these packet anomalies in detail along with auth logs from the VM (including alert tags for certain commands)
 
 General Project Structure:
-                          [ Attacker VM (Ubuntu 24.04) ]
-                          |                          |
-                          |  - Sends traffic         |
-                          |    (ping, nmap, etc.)    |
-                          ▼                          ▼
-                 ┌─────────────────────────────────────────┐
-                 │    Logger VM (Ubuntu 24.04)│
-                 │─────────────────────────────────────────│
-                 │                                         │
-                 │  [packet_logger.py]                     │
-                 │   └── Captures packets via scapy        │
-                 │   └── Saves to packet_log.csv           │
-                 │                                         │
-                 │  [anomaly_trainer.py]                   │
-                 │   └── Trains Isolation Forest           │
-                 │   └── Saves model as anomaly_model.joblib
-                 │                                         │
-                 │  [anomaly_detector.py]                  │
-                 │   └── Loads new packets in batches      │
-                 │   └── Predicts anomalies using model    │
-                 │   └── Applies rule-based filters        │
-                 │   └── Logs alerts to anomalies_detected.csv
-                 │                                         │
-                 │  [Filebeat]                             │
-                 │   └── Reads:                            │
-                 │       - /var/log/auth.log               │
-                 │       - anomalies_detected.csv          │
-                 │   └── Sends to Logstash                 │
-                 │                                         │
-                 └────────────────┬────────────────────────┘
-                                  │
-                             [beats.conf]
-                                  │
-                             [Logstash]
-                                  │
-                             [Elasticsearch]
-                                  │
-                             [Kibana Dashboard]
-                                  ▼
-                            Visualizes:
-                            - Packet anomalies
-                            - Auth.log alerts
-                            - Protocol breakdowns
-                            - Timeline of events
 
 
 VM Setups:
