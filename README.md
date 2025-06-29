@@ -4,6 +4,7 @@ I built it using packet logging, machine learning, authentication logs, and ELK 
 It monitors network packets on a Virtual Machine network and detects anomalous packets using an Isolation Forest ML model I trained. 
 I also used simple rule-based heuristics (e.g., unusual TCP flags, ICMP pings) to detect unusual traffic from other devices on the network.
 The elk stack is used to visualize these packet anomalies in detail along with auth logs from the VM (including alert tags for certain commands)
+(see below for project demo pics)
 
 General Project Structure:
 ![image](https://github.com/user-attachments/assets/4a5ee7e6-1054-4401-9f66-383a7e9fc732)
