@@ -29,28 +29,28 @@ Detection functionality explained:
 - Detector Script (anomaly_detector.py):
     Loads batches of new packets in real time.
     Applies the ML model to flag outliers.
-    Writes anomalies to anomalies_detected.csv
+    Writes anomalies to anomalies_detected.csv.
 
 
 To train the model effectively, I generated mixed traffic by:
-pinging sites like google, youtube from the logger VM
+pinging sites like google, youtube from the logger VM. 
 From the attacker VM, I ran commands like, 
-   nmap -sS 192.168.56.101
-   ping 192.168.56.101 -c 5
-   hydra -l root -P passwords.txt ssh://192.168.56.101
+   nmap -sS <IP>, 
+   ping <IP> -c 5,
+   hydra -l root -P passwords.txt ssh://<IP>.
 This helped introduce some real anomaly examples to the data.
 
 
 
 ELK Stack setup:
-I referred to https://portforwarded.com/install-elastic-elk-stack-8-x-on-ubuntu-22-04-lts/) to install Elasticsearch, Logstash, and Kibana manually on the logger VM
-I then configured filebeat.yml to ship the network packet logs (from anomalies_detected.csv) and auth.log from the VM
+I referred to https://portforwarded.com/install-elastic-elk-stack-8-x-on-ubuntu-22-04-lts/) to install Elasticsearch, Logstash, and Kibana manually on the logger VM.
+I then configured filebeat.yml to ship the network packet logs (from anomalies_detected.csv) and auth.log from the VM.
 My beats.conf handles both types of logs by routing based on a log_type field.
 
 Kibana Setup:
 To visualize the logs, I created data views for packet and auth log indices.
 In Kibana, I then built dashboards to show anomalous packets by time, IP, ports, size, and protocol.
-I also displayed auth log alerts with timestamp filters. Alerts are displayed in real time and are detected by the use of certain keywords in commands entered in the VM (eg: sudo, invalid, failed...etc)
+I also displayed auth log alerts with timestamp filters. Alerts are displayed in real time and are detected by the use of certain keywords in commands entered in the VM (eg: sudo, invalid, failed...etc).
 
 
 Generating anomalous network traffic/packets:
